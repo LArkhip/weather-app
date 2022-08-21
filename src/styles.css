@@ -16,19 +16,23 @@ body {
 #inputCity {
   background-color: rgba(255, 255, 255, 0.4);
 }
+
 #searchBtn {
   color: #396b80;
+  background-color: rgb(218, 193, 197);
   margin-left: 10px;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid #396b80;
   border-radius: 4px;
 }
 
 #currentLocationWeatherBtn {
   margin-top: 10px;
   color: #396b80;
+  background-color: rgb(218, 193, 197);
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid #396b80;
+
   border-radius: 4px;
 }
 
