@@ -28,6 +28,12 @@ function showWeatherByLocation(response) {
   let locationCurrentTemp = document.querySelector("#currentTemperature");
   let currentTemp = Math.round(response.data.main.temp);
   locationCurrentTemp.innerHTML = `${currentTemp}&deg;`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 // display weather by entered city
