@@ -47,32 +47,35 @@
 <button type="button" id="currentLocationWeatherBtn">Weather at current location</button>
 </div>
 
-        <div
-          class="d-flex flex-row justify-content-center align-items-center"
-        ><div class="currentValues">
+      <div class="d-flex flex-row justify-content-center align-items-center currentContainer">
+        
+        <div class="currentValues">
           <span class="cityName" id="currentCity"></span>
           <img 
-          src ="https://cdn2.iconfinder.com/data/icons/bubble-set-general/48/Sun-512.png"
+          src ="https://cdn.icon-icons.com/icons2/2484/PNG/512/weather_icon_150018.png"
           width="80px"
           alt = " "
           id = "icon"
           />
           <span class="currentTemperature" id="currentTemperature"></span
           ><a href="#" id="celcius" >C</a><span  id="separator">|</span
-          ><a href="#" id="fahrenheit">F</a></div>
+          ><a href="#" id="fahrenheit">F</a>
+        </div>
 
-          <div class="d-flex text-start flex-column currentValues2">
-            <div>
-            <span id="weatherDescription"></span>
-            </div>
+        <div class="d-flex text-start flex-column currentValues2">
+          <div>
+          <span id="weatherDescription"></span>
+          </div>
 
-            <div>humidity: <span id="humidityValue"></span></div>
+          <div>humidity: 
+          <span id="humidityValue"></span>
+          </div>
 
-            <div>
-              wind: <span id="windValue"></span>
-              
-            </div>
-          </div></div>
+          <div>wind: 
+          <span id="windValue"></span>  
+          </div>
+        </div>
+      </div>
 
           <div class="row" id="containerForecast">
             
