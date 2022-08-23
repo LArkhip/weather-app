@@ -45,6 +45,7 @@ body {
 .currentContainer {
   background-color: rgb(0, 0, 0, 0.1);
   margin: 10px 0px 10px 0px;
+  padding: 0px 20px 20px 20px;
 }
 
 #weatherDescription {
@@ -73,11 +74,14 @@ body {
   font-size: 16pt;
 }
 
-#containerForecast {
+#forecast {
   margin-top: 20px;
   padding-top: 10px;
-  border-top: 1px solid grey;
   text-align: center;
+}
+
+.forecast-image {
+  width: 60%;
 }
 .weekDay {
   font-weight: bolder;

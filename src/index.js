@@ -88,6 +88,29 @@ function showTemperature(response) {
   );
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col">
+            <div class="weekDay">${day}</div>
+            <img class="forecast-image" src="http://openweathermap.org/img/wn/02d@2x.png" />
+            <div class="forecast-temperatures">
+              <span class="forecast-max">22&deg;</span>
+              <span class="forecast-min">14&deg;</span>
+            </div>
+          
+      `;
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
 // Display current Day&Time
 let currentDayTime = document.querySelector("#currentDateTime");
 
@@ -130,3 +153,5 @@ function switchUnitsC(event) {
   //celcius.innerHTML = null;
 }
 celcius.addEventListener("click", switchUnitsC);
+
+displayForecast();
