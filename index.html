@@ -49,31 +49,34 @@
 
     <div class="d-flex flex-row justify-content-center align-items-center currentContainer">
         
-      <div class="currentValues">
+      <div class="col-7 text-end currentValues">
         <span class="cityName" id="currentCity"></span>
-        <img 
+        
+          <span class="currentTemperature" id="currentTemperature"></span
+          ><a href="#" id="celcius" >C</a><span  id="separator">|</span
+          ><a href="#" id="fahrenheit">F</a>
+          <img 
           src ="https://cdn-icons-png.flaticon.com/512/175/175900.png"
           width= 90px
           alt = " "
           id = "icon" 
         />
-          <span class="currentTemperature" id="currentTemperature"></span
-          ><a href="#" id="celcius" >C</a><span  id="separator">|</span
-          ><a href="#" id="fahrenheit">F</a>
       </div>
 
-      <div class="d-flex text-start flex-column currentValues2">
+      <div class="col currentValues2">
         <div>
           <span id="weatherDescription"></span>
-        </div>
-
-        <div>humidity: 
-          <span id="humidityValue"></span>
         </div>
 
         <div>wind: 
           <span id="windValue"></span>  
         </div>
+        
+        <div>humidity: 
+          <span id="humidityValue"></span>
+        </div>
+
+        
       </div>
     </div>
 
