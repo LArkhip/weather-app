@@ -58,7 +58,7 @@ function showWeatherByLocation(response) {
   let locationCurrentTemp = document.querySelector("#currentTemperature");
   let currentTemp = Math.round(response.data.main.temp);
 
-  let globalCurrentTemperature = currentTemp;
+  globalCurrentTemperature = currentTemp;
   locationCurrentTemp.innerHTML = `${currentTemp}&deg;`;
   console.log(globalCurrentTemperature);
 
