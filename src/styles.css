@@ -5,12 +5,13 @@ body {
   background-position: center center;
 }
 .containerMain {
-  /* border: solid;
-  border-color: rgb(146, 146, 146);
-  border-radius: 4px; */
-  padding: 30px;
-  margin: 50px 20px 5px 20px;
+  padding: 20px;
+  margin: 50px 50px 5px 50px;
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+#currentDateTime {
+  font-family: "Courier New", Courier, monospace;
 }
 
 #inputCity {
@@ -57,7 +58,7 @@ body {
 #weatherDescription {
   text-decoration: underline;
   color: #396b80;
-  font-weight: bold;
+
   font-size: 14pt;
 }
 
@@ -82,8 +83,7 @@ body {
 }
 
 #forecast {
-  margin-top: 20px;
-  padding-top: 10px;
+  margin: 20px 5px 0px 5px;
   text-align: center;
 }
 
@@ -92,6 +92,19 @@ body {
 }
 .weekDay {
   font-weight: bolder;
+  color: #48484a;
+}
+
+.forecast-temperatures {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+.forecast-max {
+  color: #c0634a;
+  font-weight: bolder;
+}
+
+.forecast-min {
+  color: #48484a;
 }
 
 label {
@@ -103,5 +116,6 @@ label {
   text-align: center;
   font-family: "Courier New", Courier, monospace;
   font-size: 12pt;
-  margin-top: 5px;
+  margin: 10px 50px 5px 50px;
+  background-color: rgba(255, 255, 255, 0.2);
 }

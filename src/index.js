@@ -1,5 +1,29 @@
 let globalCurrentTemperature = 0;
 
+// Display current Day&Time
+let currentDayTime = document.querySelector("#currentDateTime");
+let now = new Date();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+let hours = now.getHours();
+if (hours < 10) {
+  hours = "0" + hours;
+}
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = "0" + minutes;
+}
+
+currentDayTime.innerHTML = `${day} ${hours}:${minutes}`;
+
 //display weather by Location
 let locationWeatherBtn = document.querySelector("#currentLocationWeatherBtn");
 locationWeatherBtn.addEventListener("click", getLocation);
@@ -22,12 +46,21 @@ function showWeatherByLocation(response) {
   console.log(response.data.name);
   console.log(response.data.main.temp);
 
+  let windSpeed = document.querySelector("#windValue");
+  windSpeed.innerHTML = `${response.data.wind.speed} m/sec`;
+
+  let humidity = document.querySelector("#humidityValue");
+  humidity.innerHTML = `${response.data.main.humidity} %`;
+
   let currentLocation = document.querySelector("#currentCity");
   currentLocation.innerHTML = `${response.data.name}`;
 
   let locationCurrentTemp = document.querySelector("#currentTemperature");
   let currentTemp = Math.round(response.data.main.temp);
+
+  let globalCurrentTemperature = currentTemp;
   locationCurrentTemp.innerHTML = `${currentTemp}&deg;`;
+  console.log(globalCurrentTemperature);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -37,7 +70,6 @@ function showWeatherByLocation(response) {
 }
 
 // display weather by entered city
-
 //Input-Search city
 let inputCity = document.getElementById("inputCity");
 inputCity.addEventListener("keypress", function (event) {
@@ -75,6 +107,7 @@ function showTemperature(response) {
   console.log(response.data);
   console.log(response.data.main.temp);
   console.log(response);
+
   let currentTemp = Math.round(response.data.main.temp);
   globalCurrentTemperature = currentTemp;
   let cityCurrentTemperature = document.querySelector("#currentTemperature");
@@ -100,9 +133,7 @@ function showTemperature(response) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
   return days[day];
 }
 
@@ -125,7 +156,7 @@ function displayForecast(response) {
             <div class="forecast-temperatures">
               <span class="forecast-max">${Math.round(
                 forecastDay.temp.max
-              )}&deg;</span><br>
+              )}&deg;</span>
               <span class="forecast-min">${Math.round(
                 forecastDay.temp.min
               )}&deg;</span>
@@ -138,38 +169,13 @@ function displayForecast(response) {
   });
 }
 
-// Display current Day&Time
-let currentDayTime = document.querySelector("#currentDateTime");
-
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-if (hours < 10) {
-  hours = "0" + hours;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = "0" + minutes;
-}
-
-currentDayTime.innerHTML = `${day} ${hours}:${minutes}`;
-
 // Switch between Celcius and Fahrenheit
 function switchUnitsF(event) {
   let fahrenheit = document.querySelector("#fahrenheit");
   let currentTemperature = document.querySelector("#currentTemperature");
+
   let f = (globalCurrentTemperature * 9) / 5 + 32;
   currentTemperature.innerHTML = `${f}°`;
-  //fahrenheit.innerHTML = null;
 }
 fahrenheit.addEventListener("click", switchUnitsF);
 
@@ -177,6 +183,5 @@ function switchUnitsC(event) {
   let celcius = document.querySelector("#celcius");
   let currentTemperature = document.querySelector("#currentTemperature");
   currentTemperature.innerHTML = `${globalCurrentTemperature}°`;
-  //celcius.innerHTML = null;
 }
 celcius.addEventListener("click", switchUnitsC);
