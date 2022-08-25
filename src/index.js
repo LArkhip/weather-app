@@ -52,6 +52,9 @@ function showWeatherByLocation(response) {
   let humidity = document.querySelector("#humidityValue");
   humidity.innerHTML = `${response.data.main.humidity} %`;
 
+  let weatherDescription = document.querySelector("#weatherDescription");
+  weatherDescription.innerHTML = `${response.data.weather[0].description}`;
+
   let currentLocation = document.querySelector("#currentCity");
   currentLocation.innerHTML = `${response.data.name}`;
 
