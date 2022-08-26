@@ -42,9 +42,6 @@ function sendLocation(position) {
 }
 
 function showWeatherByLocation(response) {
-  console.log(response.data.name);
-  console.log(response.data.main.temp);
-
   let windSpeed = document.querySelector("#windValue");
   windSpeed.innerHTML = `${response.data.wind.speed} m/sec`;
 
@@ -69,6 +66,9 @@ function showWeatherByLocation(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  document.getElementById("fahrenheit").style.color = "blue";
+  document.getElementById("celcius").style.color = "black";
 }
 
 // display weather by entered city
@@ -100,16 +100,11 @@ function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "9cc1621f195afbca65aea792becaaa41";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiURL);
   axios.get(apiURL).then(displayForecast);
 }
 
 // displaying current City Weather
 function showTemperature(response) {
-  console.log(response.data);
-  console.log(response.data.main.temp);
-  console.log(response);
-
   let currentTemp = Math.round(response.data.main.temp);
   globalCurrentTemperature = currentTemp;
   let cityCurrentTemperature = document.querySelector("#currentTemperature");
@@ -130,6 +125,9 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   getForecast(response.data.coord);
+
+  document.getElementById("fahrenheit").style.color = "blue";
+  document.getElementById("celcius").style.color = "black";
 }
 
 function formatDay(timestamp) {
@@ -172,23 +170,25 @@ function displayForecast(response) {
 }
 
 // Switch between Celcius and Fahrenheit
+let currentTemperature = document.querySelector("#currentTemperature");
+let fahrenheit = document.querySelector("#fahrenheit");
+let celcius = document.querySelector("#celcius");
 
 function switchUnitsF(event) {
   if (globalCurrentTemperature != null) {
-    let fahrenheit = document.querySelector("#fahrenheit");
-    let currentTemperature = document.querySelector("#currentTemperature");
-
     let f = (globalCurrentTemperature * 9) / 5 + 32;
     currentTemperature.innerHTML = `${f}°`;
+    document.getElementById("fahrenheit").style.color = "black";
+    document.getElementById("celcius").style.color = "blue";
   }
 }
 fahrenheit.addEventListener("click", switchUnitsF);
 
 function switchUnitsC(event) {
   if (globalCurrentTemperature != null) {
-    let celcius = document.querySelector("#celcius");
-    let currentTemperature = document.querySelector("#currentTemperature");
     currentTemperature.innerHTML = `${globalCurrentTemperature}°`;
+    document.getElementById("fahrenheit").style.color = "blue";
+    document.getElementById("celcius").style.color = "black";
   }
 }
 celcius.addEventListener("click", switchUnitsC);
