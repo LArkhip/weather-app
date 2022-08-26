@@ -1,5 +1,4 @@
-let globalCurrentTemperature = 0;
-
+let globalCurrentTemperature = null;
 // Display current Day&Time
 let currentDayTime = document.querySelector("#currentDateTime");
 let now = new Date();
@@ -173,18 +172,23 @@ function displayForecast(response) {
 }
 
 // Switch between Celcius and Fahrenheit
-function switchUnitsF(event) {
-  let fahrenheit = document.querySelector("#fahrenheit");
-  let currentTemperature = document.querySelector("#currentTemperature");
 
-  let f = (globalCurrentTemperature * 9) / 5 + 32;
-  currentTemperature.innerHTML = `${f}°`;
+function switchUnitsF(event) {
+  if (globalCurrentTemperature != null) {
+    let fahrenheit = document.querySelector("#fahrenheit");
+    let currentTemperature = document.querySelector("#currentTemperature");
+
+    let f = (globalCurrentTemperature * 9) / 5 + 32;
+    currentTemperature.innerHTML = `${f}°`;
+  }
 }
 fahrenheit.addEventListener("click", switchUnitsF);
 
 function switchUnitsC(event) {
-  let celcius = document.querySelector("#celcius");
-  let currentTemperature = document.querySelector("#currentTemperature");
-  currentTemperature.innerHTML = `${globalCurrentTemperature}°`;
+  if (globalCurrentTemperature != null) {
+    let celcius = document.querySelector("#celcius");
+    let currentTemperature = document.querySelector("#currentTemperature");
+    currentTemperature.innerHTML = `${globalCurrentTemperature}°`;
+  }
 }
 celcius.addEventListener("click", switchUnitsC);
