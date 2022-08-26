@@ -69,6 +69,8 @@ function showWeatherByLocation(response) {
 
   document.getElementById("fahrenheit").style.color = "blue";
   document.getElementById("celcius").style.color = "black";
+
+  getForecast(response.data.coord);
 }
 
 // display weather by entered city
@@ -140,7 +142,6 @@ function formatDay(timestamp) {
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   forecast.forEach(function (forecastDay, index) {
