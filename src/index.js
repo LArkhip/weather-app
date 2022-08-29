@@ -43,10 +43,10 @@ function sendLocation(position) {
 
 function showWeatherByLocation(response) {
   let windSpeed = document.querySelector("#windValue");
-  windSpeed.innerHTML = `${response.data.wind.speed} m/sec`;
+  windSpeed.innerHTML = `wind: ${response.data.wind.speed} m/sec`;
 
   let humidity = document.querySelector("#humidityValue");
-  humidity.innerHTML = `${response.data.main.humidity} %`;
+  humidity.innerHTML = `humidity: ${response.data.main.humidity} %`;
 
   let weatherDescription = document.querySelector("#weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
@@ -113,10 +113,10 @@ function showTemperature(response) {
   cityCurrentTemperature.innerHTML = `${currentTemp}&deg;`;
 
   let windSpeed = document.querySelector("#windValue");
-  windSpeed.innerHTML = `${response.data.wind.speed} m/sec`;
+  windSpeed.innerHTML = `wind: ${response.data.wind.speed} m/sec`;
 
   let humidity = document.querySelector("#humidityValue");
-  humidity.innerHTML = `${response.data.main.humidity} %`;
+  humidity.innerHTML = `humidity: ${response.data.main.humidity} %`;
 
   let weatherDescription = document.querySelector("#weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;

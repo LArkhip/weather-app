@@ -53,9 +53,8 @@ body {
 }
 
 #weatherDescription {
-  text-decoration: underline;
   color: #396b80;
-
+  font-weight: bolder;
   font-size: 14pt;
 }
 
