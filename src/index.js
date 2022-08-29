@@ -1,4 +1,5 @@
 let globalCurrentTemperature = null;
+
 // Display current Day&Time
 let currentDayTime = document.querySelector("#currentDateTime");
 let now = new Date();
@@ -34,8 +35,6 @@ function getLocation(event) {
 }
 
 function sendLocation(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
   let apiKey = "9cc1621f195afbca65aea792becaaa41";
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherByLocation);
@@ -59,16 +58,12 @@ function showWeatherByLocation(response) {
 
   globalCurrentTemperature = currentTemp;
   locationCurrentTemp.innerHTML = `${currentTemp}&deg;`;
-  console.log(globalCurrentTemperature);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
-  document.getElementById("fahrenheit").style.color = "blue";
-  document.getElementById("celcius").style.color = "black";
 
   getForecast(response.data.coord);
 }
@@ -99,7 +94,6 @@ function searchCity(event) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "9cc1621f195afbca65aea792becaaa41";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayForecast);
@@ -127,9 +121,6 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   getForecast(response.data.coord);
-
-  document.getElementById("fahrenheit").style.color = "blue";
-  document.getElementById("celcius").style.color = "black";
 }
 
 function formatDay(timestamp) {
@@ -169,27 +160,3 @@ function displayForecast(response) {
     }
   });
 }
-
-// Switch between Celcius and Fahrenheit
-let currentTemperature = document.querySelector("#currentTemperature");
-let fahrenheit = document.querySelector("#fahrenheit");
-let celcius = document.querySelector("#celcius");
-
-function switchUnitsF(event) {
-  if (globalCurrentTemperature != null) {
-    let f = (globalCurrentTemperature * 9) / 5 + 32;
-    currentTemperature.innerHTML = `${f}°`;
-    document.getElementById("fahrenheit").style.color = "black";
-    document.getElementById("celcius").style.color = "blue";
-  }
-}
-fahrenheit.addEventListener("click", switchUnitsF);
-
-function switchUnitsC(event) {
-  if (globalCurrentTemperature != null) {
-    currentTemperature.innerHTML = `${globalCurrentTemperature}°`;
-    document.getElementById("fahrenheit").style.color = "blue";
-    document.getElementById("celcius").style.color = "black";
-  }
-}
-celcius.addEventListener("click", switchUnitsC);
