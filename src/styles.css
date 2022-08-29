@@ -51,8 +51,9 @@ body {
   transition: 0.7s;
   background-color: rgb(57, 107, 128, 0.7);
 }
-:/*#currentDateTime{border-bottom:1pxsolidgrey}*/.currentcontainer  {
-  background-color: rgb(0, 0, 0, 0.1);
+
+.currentcontainer {
+  background-color: rgba(0, 0, 0, 0.1);
   margin: 30px 0px 10px 0px;
   padding: 5px 0px 5px 0px;
 }
